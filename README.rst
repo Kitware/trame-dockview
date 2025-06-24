@@ -137,7 +137,7 @@ License
 -----------------------------------------------------------
 
 trame-dockview is made available under the MIT License. For more details, see `LICENSE <https://github.com/Kitware/trame-dockview/blob/master/LICENSE>`_
-This license has been chosen to match the one use by `DockView <https://github.com/mathuo/dockview/blob/master/LICENSE>`_ which is instrumental for making that library possible.
+This license has been chosen to match the one use by `DockView License <https://github.com/mathuo/dockview/blob/master/LICENSE>`_ which is instrumental for making that library possible.
 
 
 Community
