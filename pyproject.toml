@@ -3,7 +3,7 @@ name = "trame-dockview"
 version = "1.0.0"
 description = "Trame wrapper to a Docking Layout Manager"
 authors = [{ name = "Kitware Inc." }]
-dependencies = ["trame_client>=3.10"]
+dependencies = ["trame_client>=3.9.1"]
 requires-python = ">=3.10"
 readme = "README.rst"
 license = { text = "MIT License" }
