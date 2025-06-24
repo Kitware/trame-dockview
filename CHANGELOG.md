@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.3 (2025-06-24)
+
+### Bug Fixes
+
+- **readme**: For release
+  ([`d2ec195`](https://github.com/Kitware/trame-dockview/commit/d2ec195fd80de51a72cbab4f707f6c3bbd638d56))
+
+
 ## v1.0.2 (2025-06-24)
 
 ### Bug Fixes
