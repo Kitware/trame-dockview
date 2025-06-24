@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v1.1.0 (2025-06-24)
+
+### Code Style
+
+- Run ruff on code
+  ([`0bd3eca`](https://github.com/Kitware/trame-dockview/commit/0bd3eca7971f346a1627b413495be4baf9a73ebd))
+
+### Features
+
+- **components**: Expose all options along with components
+  ([`cd2ddbe`](https://github.com/Kitware/trame-dockview/commit/cd2ddbeb9a6aaa424065cabe66d3a859ba8010bb))
+
+
 ## v1.0.3 (2025-06-24)
 
 ### Bug Fixes
