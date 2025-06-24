@@ -14,11 +14,92 @@ const THEMES_CLASSES = {
   VisualStudio: "dockview-theme-vs",
 };
 
+function templateToComponent(name) {
+  const safeName = name
+    .toLowerCase()
+    .replaceAll("_", "-")
+    .replaceAll("--", "-");
+  return `trame-template-${safeName}`;
+}
+
+const PROP_NAMES = [
+  "defaultRenderer",
+  "disableAutoResizing",
+  "disableDnd",
+  "disableFloatingGroups",
+  "disableTabsOverflowList",
+  "dndEdges",
+  "floatingGroupBounds",
+  "hideBorders",
+  "locked",
+  "noPanelsOverlay",
+  "popoutUrl",
+  "scrollbars",
+  "singleTabMode",
+];
+
 export default {
-  emits: ["ready", "activePanel"],
+  emits: ["ready", "activePanel", "removePanel"],
   props: {
     theme: {
       default: "Dracula",
+    },
+    defaultRenderer: {
+      default: "always",
+      type: String,
+    },
+    disableAutoResizing: {
+      default: false,
+      type: Boolean,
+    },
+    disableDnd: {
+      default: false,
+      type: Boolean,
+    },
+    disableFloatingGroups: {
+      default: false,
+      type: Boolean,
+    },
+    disableTabsOverflowList: {
+      default: false,
+      type: Boolean,
+    },
+    dndEdges: {
+      default: false,
+      type: Boolean,
+    },
+    floatingGroupBounds: {}, // {minimumHeightWithinViewport, minimumWidthWithinViewport} | boundedWithinViewport
+    hideBorders: {
+      default: false,
+      type: Boolean,
+    },
+    locked: {
+      default: false,
+      type: Boolean,
+    },
+    noPanelsOverlay: {
+      default: "watermark", // watermark | emptyGroup
+      type: String,
+    },
+    popoutUrl: {
+      type: String,
+    },
+    scrollbars: {
+      // custom | native
+      type: String,
+    },
+    singleTabMode: {
+      default: "default", // default | fullwidth
+      type: String,
+    },
+    components: {
+      default: () => ({
+        defaultTabComponent: null,
+        leftHeaderActionsComponent: null,
+        prefixHeaderActionsComponent: null,
+        rightHeaderActionsComponent: null,
+        watermarkComponent: null,
+      }),
     },
   },
   components: {
@@ -40,10 +121,17 @@ export default {
       api = event.api;
 
       // Listen to active panel to emit event
-      const disposable = api.onDidActivePanelChange((e) => {
-        emit("activePanel", e.id);
-      });
-      disposables.push(disposable);
+      disposables.push(
+        api.onDidActivePanelChange((e) => {
+          emit("activePanel", e?.id);
+        })
+      );
+      disposables.push(
+        api.onDidRemovePanel((e) => {
+          console.log("onDidRemovePanel", e);
+          emit("removePanel", e?.id);
+        })
+      );
 
       emit("ready");
     }
@@ -57,9 +145,26 @@ export default {
         ...addOn,
       });
     }
+    // v-bind
+    const bind = computed(() => {
+      const dockViewProps = {};
+      Object.entries(props.components).forEach(([k, v]) => {
+        if (v) {
+          dockViewProps[k] = templateToComponent(v);
+        }
+      });
 
-    return { theme, onReady, addPanel };
+      PROP_NAMES.forEach((key) => {
+        if (props[key]) {
+          dockViewProps[key] = props[key];
+        }
+      });
+
+      return dockViewProps;
+    });
+
+    return { theme, onReady, addPanel, bind };
   },
   template:
-    '<div style="position:relative;width:100%;height:100%;"><dockview-vue style="position:absolute;width:100%;height:100%" :className="theme" :class="theme" @ready="onReady" /></div>',
+    '<div style="position:relative;width:100%;height:100%;"><dockview-vue style="position:absolute;width:100%;height:100%" :className="theme" :class="theme" @ready="onReady" v-bind="bind" /></div>',
 };
