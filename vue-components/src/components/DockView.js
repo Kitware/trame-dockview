@@ -124,13 +124,13 @@ export default {
       disposables.push(
         api.onDidActivePanelChange((e) => {
           emit("activePanel", e?.id);
-        })
+        }),
       );
       disposables.push(
         api.onDidRemovePanel((e) => {
           console.log("onDidRemovePanel", e);
           emit("removePanel", e?.id);
-        })
+        }),
       );
 
       emit("ready");
