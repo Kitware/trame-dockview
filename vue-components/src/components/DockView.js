@@ -1,5 +1,5 @@
 import "dockview-vue/dist/styles/dockview.css";
-import { computed } from "vue";
+import { computed, onBeforeUnmount } from "vue";
 import { DockviewVue } from "dockview-vue";
 import DockPanel from "./DockPanel";
 
@@ -15,7 +15,7 @@ const THEMES_CLASSES = {
 };
 
 export default {
-  emits: ["ready"],
+  emits: ["ready", "activePanel"],
   props: {
     theme: {
       default: "Dracula",
@@ -27,10 +27,24 @@ export default {
   },
   setup(props, { emit }) {
     let api = null;
+    const disposables = [];
     const theme = computed(() => THEMES_CLASSES[props.theme]);
+
+    onBeforeUnmount(() => {
+      while (disposables.length) {
+        disposables.pop().dispose();
+      }
+    });
 
     function onReady(event) {
       api = event.api;
+
+      // Listen to active panel to emit event
+      const disposable = api.onDidActivePanelChange((e) => {
+        emit("activePanel", e.id);
+      });
+      disposables.push(disposable);
+
       emit("ready");
     }
 
