@@ -36,7 +36,7 @@ The `Dockview website <https://dockview.dev/>`_ is very well made for exploring 
 DockView Widget
 ```````````````````````````````````````````````````````````
 
-First you need to import the ``dockview`` module so you can instantiate the layout manager like illustrated below.
+First you need to import the **dockview** module so you can instantiate the layout manager like illustrated below.
 
 .. code-block:: python
 
@@ -157,5 +157,5 @@ Share your experience `with a testimonial <https://github.com/Kitware/trame/issu
 JavaScript dependency
 -----------------------------------------------------------
 
-This Python package bundle the following ``dockview-vue@4.4.0`` library.
+This Python package bundle the following **dockview-vue@4.4.0** library.
 If you would like us to upgrade its dependency or expose more capabilities provided by the underlying library, `please reach out <https://www.kitware.com/trame/>`_.
