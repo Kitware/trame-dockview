@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.0 (2025-06-25)
+
+### Features
+
+- **panel**: Add active_panel and remove_panel method
+  ([`b07f368`](https://github.com/Kitware/trame-dockview/commit/b07f368e313ebf31d8e9dc77e6389642b904166e))
+
+
 ## v1.1.0 (2025-06-24)
 
 ### Code Style
