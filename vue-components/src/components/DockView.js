@@ -163,7 +163,15 @@ export default {
       return dockViewProps;
     });
 
-    return { theme, onReady, addPanel, bind };
+    function removePanel(panelId) {
+      api.getPanel(panelId)?.api?.close();
+    }
+
+    function activePanel(panelId) {
+      api.getPanel(panelId)?.api?.setActive();
+    }
+
+    return { theme, onReady, addPanel, bind, removePanel, activePanel };
   },
   template:
     '<div style="position:relative;width:100%;height:100%;"><dockview-vue style="position:absolute;width:100%;height:100%" :className="theme" :class="theme" @ready="onReady" v-bind="bind" /></div>',

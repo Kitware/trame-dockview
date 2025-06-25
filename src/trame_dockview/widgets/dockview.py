@@ -125,3 +125,25 @@ class DockView(HtmlElement):
                 (https://dockview.dev/docs/core/panels/add#positioning-the-panel)
         """
         self.server.js_call(self.__ref, "addPanel", id, title, template_name, add_on)
+
+    def remove_panel(self, id):
+        """
+        Remove/Close an existing panel within the layout.
+        This can only be called once the widget is ready.
+
+        Args:
+            id (string):
+                Unique identifier for that panel
+        """
+        self.server.js_call(self.__ref, "removePanel", id)
+
+    def active_panel(self, id):
+        """
+        Activate an existing panel within the layout.
+        This can only be called once the widget is ready.
+
+        Args:
+            id (string):
+                Unique identifier for that panel
+        """
+        self.server.js_call(self.__ref, "activePanel", id)
