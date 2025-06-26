@@ -28,6 +28,7 @@ class Demo(TrameApp):
 
     def _build_ui(self):
         with SinglePageLayout(self.server, full_height=True) as self.ui:
+            self.ui.root.theme = ("theme === 'Light' ? 'light' : 'dark'",)
             with self.ui.toolbar:
                 v3.VSpacer()
                 v3.VSelect(

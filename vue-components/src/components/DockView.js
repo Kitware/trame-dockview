@@ -3,15 +3,46 @@ import { computed, onBeforeUnmount } from "vue";
 import { DockviewVue } from "dockview-vue";
 import DockPanel from "./DockPanel";
 
-const THEMES_CLASSES = {
-  Abyss: "dockview-theme-abyss",
-  AbyssSpaced: "dockview-theme-abyss-spaced",
-  Dark: "dockview-theme-dark",
-  Dracula: "dockview-theme-dracula",
-  Light: "dockview-theme-light",
-  LightSpaced: "dockview-theme-light-spaced",
-  Replit: "dockview-theme-replit",
-  VisualStudio: "dockview-theme-vs",
+const THEMES = {
+  dark: {
+    name: "dark",
+    className: "dockview-theme-dark",
+  },
+  light: {
+    name: "light",
+    className: "dockview-theme-light",
+  },
+  visualstudio: {
+    name: "visualStudio",
+    className: "dockview-theme-vs",
+  },
+  abyss: {
+    name: "abyss",
+    className: "dockview-theme-abyss",
+  },
+  dracula: {
+    name: "dracula",
+    className: "dockview-theme-dracula",
+  },
+  replit: {
+    name: "replit",
+    className: "dockview-theme-replit",
+    gap: 10,
+  },
+  abyssspaced: {
+    name: "abyssSpaced",
+    className: "dockview-theme-abyss-spaced",
+    gap: 10,
+    dndOverlayMounting: "absolute",
+    dndPanelOverlay: "group",
+  },
+  lightspaced: {
+    name: "lightSpaced",
+    className: "dockview-theme-light-spaced",
+    gap: 10,
+    dndOverlayMounting: "absolute",
+    dndPanelOverlay: "group",
+  },
 };
 
 function templateToComponent(name) {
@@ -109,7 +140,7 @@ export default {
   setup(props, { emit }) {
     let api = null;
     const disposables = [];
-    const theme = computed(() => THEMES_CLASSES[props.theme]);
+    const theme = computed(() => THEMES[props.theme.toLowerCase()]);
 
     onBeforeUnmount(() => {
       while (disposables.length) {
@@ -171,8 +202,15 @@ export default {
       api.getPanel(panelId)?.api?.setActive();
     }
 
-    return { theme, onReady, addPanel, bind, removePanel, activePanel };
+    return {
+      theme,
+      onReady,
+      addPanel,
+      bind,
+      removePanel,
+      activePanel,
+    };
   },
   template:
-    '<div style="position:relative;width:100%;height:100%;"><dockview-vue style="position:absolute;width:100%;height:100%" :className="theme" :class="theme" @ready="onReady" v-bind="bind" /></div>',
+    '<div style="position:relative;width:100%;height:100%;"><dockview-vue style="position:absolute;width:100%;height:100%" :theme="theme" @ready="onReady" /></div>',
 };
