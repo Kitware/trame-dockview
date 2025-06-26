@@ -13,6 +13,9 @@ Dockview is a fully featured Docking Layout Manager with customizable themes and
 This package is not supposed to be used by itself but rather should come as a dependency of **trame**.
 For any specificity, please refer to `the trame documentation <https://kitware.github.io/trame/>`_.
 
+.. image:: https://raw.githubusercontent.com/Kitware/trame-dockview/master/trame-dockview.png
+  :alt: Example of dockview usage
+
 
 Installing
 -----------------------------------------------------------
