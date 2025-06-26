@@ -1,6 +1,6 @@
 [project]
 name = "trame-dockview"
-version = "1.2.0"
+version = "1.2.1"
 description = "Trame wrapper to a Docking Layout Manager"
 authors = [{ name = "Kitware Inc." }]
 dependencies = ["trame_client>=3.9.1"]

@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.1 (2025-06-26)
+
+### Bug Fixes
+
+- **theme**: Proper handling of theme
+  ([`471dba1`](https://github.com/Kitware/trame-dockview/commit/471dba1c5fb767dba2eddd9609e7088da21de509))
+
+
 ## v1.2.0 (2025-06-25)
 
 ### Features
