@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.2 (2025-06-26)
+
+### Bug Fixes
+
+- Update status and add image
+  ([`9130171`](https://github.com/Kitware/trame-dockview/commit/9130171c0064fd602470d4867068bea3ce3704b7))
+
+
 ## v1.2.1 (2025-06-26)
 
 ### Bug Fixes
