@@ -1,3 +1,15 @@
+#!/usr/bin/env -S uv run --script
+#
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "trame",
+#     "trame-dockview",
+#     "trame-vtk",
+#     "trame-vuetify",
+# ]
+#
+# ///
 from trame.app import TrameApp
 from trame.ui.html import DivLayout
 from trame.ui.vuetify3 import SinglePageLayout
