@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v2.0.1 (2026-09-17)
+
+### Bug Fixes
+
+- Update JS build dependencies ([#4](https://github.com/Kitware/trame-dockview/pull/4),
+  [`06be568`](https://github.com/Kitware/trame-dockview/commit/06be56880ac6cf86dc8a7c0a66d85d7524c84705))
+
+### Documentation
+
+- Update download badge url
+  ([`7f0f657`](https://github.com/Kitware/trame-dockview/commit/7f0f6570ffe815a91e3c28a8625b97eef78dcbec))
+
+
 ## v2.0.0 (2026-08-23)
 
 ### Features
